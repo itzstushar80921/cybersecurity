@@ -1,0 +1,54 @@
+{
+  "scan_metadata": {
+    "scanner": "Tenable Nessus Expert v10.7",
+    "scan_type": "PCI-DSS / RBI Compliance External Perimeter Audit",
+    "target_scope": "UPI Real-time Payment Switch & Open-Banking APIs",
+    "scan_date": "2026-09-14T16:00:00Z",
+    "compliance_framework": "RBI Cyber Security Framework Annex I & PCI-DSS 4.0",
+    "total_targets": 12
+  },
+  "audit_results": {
+    "overall_status": "FAILED_SLA",
+    "total_critical_vulnerabilities": 2,
+    "total_high_vulnerabilities": 5,
+    "total_medium_vulnerabilities": 3
+  },
+  "findings": [
+    {
+      "cve_id": "CVE-2023-44487",
+      "plugin_id": 183204,
+      "name": "HTTP/2 Rapid Reset Denial of Service (Zero-Day Exploited)",
+      "severity": "High",
+      "cvss_v3_score": 7.5,
+      "epss_score": 0.912,
+      "affected_service": "UPI Switch API Gateway (api.payments.omnibank.in:443)",
+      "asset_id": "ASSET-01",
+      "threat_description": "Attacker sends RST_STREAM frames repeatedly to exhaust web server memory and CPU, leading to complete outage of UPI processing.",
+      "remediation": "Apply rate-limiting patch for Envoy/Nginx and enable AWS WAF token protection."
+    },
+    {
+      "cve_id": "CVE-2024-4577",
+      "plugin_id": 195412,
+      "name": "PHP-CGI Argument Injection Remote Code Execution",
+      "severity": "Critical",
+      "cvss_v3_score": 9.8,
+      "epss_score": 0.895,
+      "affected_service": "Partner API Portal (api.partner.omnibank.in:443)",
+      "asset_id": "ASSET-09",
+      "threat_description": "Locale character encoding flaw permits arbitrary command execution on partner integration endpoints.",
+      "remediation": "Upgrade PHP runtime to 8.2.20 / 8.3.8 immediately and verify API request sanitization rules."
+    },
+    {
+      "cve_id": "CVE-2023-48795",
+      "plugin_id": 186711,
+      "name": "Terrapin SSH Protocol Prefix Truncation Vulnerability",
+      "severity": "Medium",
+      "cvss_v3_score": 5.9,
+      "epss_score": 0.180,
+      "affected_service": "SWIFT Admin Bastion (10.200.1.5:22)",
+      "asset_id": "ASSET-05",
+      "threat_description": "Man-in-the-middle attacker can manipulate sequence numbers during handshake.",
+      "remediation": "Disable vulnerable ChaCha20-Poly1305 and CBC ciphers in sshd_config."
+    }
+  ]
+}

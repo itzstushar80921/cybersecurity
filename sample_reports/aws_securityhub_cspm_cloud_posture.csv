@@ -1,0 +1,6 @@
+FindingId,AwsAccountId,Region,Severity,Title,ResourceId,ComplianceStandard,AssociatedAssetId,Status,RemediationAction
+SEC-FIND-001,892341294120,ap-south-1,CRITICAL,S3 Bucket Public Read/Write Allowed,arn:aws:s3:::omnibank-datalake-prod-vault,SEBI CSCRF Parameter 3,ASSET-06,FAILED,Enable S3 Block Public Access and restrict bucket ACLs immediately
+SEC-FIND-002,892341294120,ap-south-1,HIGH,IAM User Admin Without Multi-Factor Authentication,arn:aws:iam::892341294120:user/cloud-secops-admin,RBI CSF Annex I Sec 3,ASSET-04,FAILED,Enforce FIDO2 hardware token MFA on AWS root and administrative IAM principals
+SEC-FIND-003,892341294120,ap-south-1,HIGH,Security Group Ingress Allows Port 22 from 0.0.0.0/0,sg-04a123f81e,CIS AWS Benchmark 5.2,ASSET-03,FAILED,Restrict SSH ingress to corporate VPN gateway CIDR only
+SEC-FIND-004,892341294120,ap-south-1,CRITICAL,EKS Cluster Control Plane Public Endpoint Active,arn:aws:eks:ap-south-1:892341294120:cluster/netbanking-prod-eks,NIST CSF PR.AC-5,ASSET-03,FAILED,Change Kubernetes API server endpoint to private access only
+SEC-FIND-005,892341294120,ap-south-1,MEDIUM,RDS Database Automated Snapshots Not Encrypted with KMS CMK,arn:aws:rds:ap-south-1:892341294120:db:credit-risk-db,ISO 27001 A.10.1.1,ASSET-07,FAILED,Enable AES-256 customer-managed KMS key encryption on database backup storage
